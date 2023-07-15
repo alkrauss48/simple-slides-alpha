@@ -1,9 +1,33 @@
 <script setup lang="ts">
+import { ref, onMounted } from 'vue'
 import SlideView from './components/SlideView.vue';
+
+const data = ref([]);
+
+onMounted(async () => {
+  const urlParams = new URLSearchParams(window.location.search);
+  const slideUrl = urlParams.get('slides');
+
+  if (!slideUrl) {
+    return;
+  }
+
+  const response = await fetch(slideUrl);
+
+  const body = await response.text();
+
+  const parsedBody = body
+    .split("\n\n")
+    .map((content: string) => {
+      return content.replace('\n', '<br >');
+    });
+
+  data.value = parsedBody;
+});
 </script>
 
 <template>
-  <SlideView msg="Welcome to Your Vue.js + TypeScript App"/>
+  <SlideView v-if="data.length > 0" :data="data"/>
 </template>
 
 <style>

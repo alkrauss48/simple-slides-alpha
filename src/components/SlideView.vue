@@ -2,16 +2,17 @@
 import { ref, computed } from 'vue'
 import SlideContent from './SlideContent.vue';
 
+const props = defineProps({
+  data: {
+    type: Array,
+    required: true,
+  },
+});
+
 const index = ref(0);
-const data = ref([
-  "Foo<br><br><ul><li>This text Has multiple </li><li>This text Has multiple lines And wants to be centered horizontally and vertically</li></ul>",
-  'Second',
-  'Third',
-]);
 
 const content = computed(() => {
-  console.log(`got here ${index.value}`);
-  return data.value[index.value];
+  return props.data[index.value];
 });
 
 const incrementContent = (count: number) => {
@@ -20,8 +21,8 @@ const incrementContent = (count: number) => {
     return;
   }
 
-  if (index.value + count >= data.value.length) {
-    index.value = data.value.length - 1;
+  if (index.value + count >= props.data.length) {
+    index.value = props.data.length - 1;
     return;
   }
 
@@ -49,6 +50,14 @@ document.addEventListener('keydown', function(event) {
     incrementContent(1);
   } else if (decrementors.includes(key)) {
     incrementContent(-1);
+  } else if (key === 'f') {
+    incrementContent(5);
+  } else if (key === 'b') {
+    incrementContent(-5);
+  } else if (key === '$') {
+    index.value = props.data.length - 1;
+  } else if (key === '0') {
+    index.value = 0;
   }
 });
 </script>
