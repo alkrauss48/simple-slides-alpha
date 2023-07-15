@@ -16,11 +16,7 @@ onMounted(async () => {
 
   const body = await response.text();
 
-  const parsedBody = body
-    .split("\n\n")
-    .map((content: string) => {
-      return content.replace('\n', '<br >');
-    });
+  const parsedBody = body.split("\n\n");
 
   data.value = parsedBody;
 });

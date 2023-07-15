@@ -21,8 +21,7 @@ onMounted(runTextFit);
 </script>
 
 <template>
-  <div id="slideContent" ref="slideContent">
-    <p v-html="content"></p>
+  <div id="slideContent" ref="slideContent" v-html="content">
   </div>
 </template>
 
@@ -38,6 +37,25 @@ onMounted(runTextFit);
 
 #slideContent * {
   margin: 0;
+  text-align: center;
+}
+
+#slideContent li {
   text-align: left;
+}
+
+#slideContent .textFitted {
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+}
+
+#slideContent img {
+  display: block;
+  margin: 0 auto;
+  max-width: 100%;
+  max-height: 100%;
 }
 </style>
