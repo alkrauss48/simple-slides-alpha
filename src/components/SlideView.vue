@@ -1,23 +1,57 @@
 <script setup lang="ts">
-import { ref, onMounted } from 'vue'
-import textfit from 'textfit';
+import { ref, computed } from 'vue'
+import SlideContent from './SlideContent.vue';
 
-const slideContent = ref(null)
+const index = ref(0);
+const data = ref([
+  "Foo<br><br><ul><li>This text Has multiple </li><li>This text Has multiple lines And wants to be centered horizontally and vertically</li></ul>",
+  'Second',
+  'Third',
+]);
 
-const runTextFit = () => {
-  textfit(slideContent.value, { maxFontSize: 500 });
-}
+const content = computed(() => {
+  console.log(`got here ${index.value}`);
+  return data.value[index.value];
+});
 
-onMounted(runTextFit);
+const incrementContent = (count: number) => {
+  if (index.value + count < 0) {
+    index.value = 0;
+    return;
+  }
 
-addEventListener("resize", runTextFit)
+  if (index.value + count >= data.value.length) {
+    index.value = data.value.length - 1;
+    return;
+  }
+
+
+  index.value = index.value + count;
+};
+
+document.addEventListener('keydown', function(event) {
+  const { key } = event;
+
+  switch (key) {
+    case "ArrowLeft":
+      incrementContent(-1);
+      break;
+    case "ArrowRight":
+      incrementContent(1);
+      break;
+    case "ArrowUp":
+      incrementContent(-1);
+      break;
+    case "ArrowDown":
+      incrementContent(1);
+      break;
+  }
+});
 </script>
 
 <template>
   <div id="slide">
-    <div ref="slideContent" style="width:90%;height:90%">
-      <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries</p>
-    </div>
+    <SlideContent :key="content" :content="content" />
   </div>
 </template>
 
