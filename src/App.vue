@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { ref, onMounted } from 'vue'
+import PreloadContent from './components/PreloadContent.vue';
 import SlideView from './components/SlideView.vue';
 
 const data = ref([]);
@@ -35,11 +36,13 @@ onMounted(async () => {
 </script>
 
 <template>
-  <SlideView
-    v-if="data.length > 0"
-    :data="data"
-    :index="params.index"
-  />
+  <div v-if="data.length > 0">
+    <PreloadContent :data="data" />
+    <SlideView
+      :data="data"
+      :index="params.index"
+    />
+  </div>
 </template>
 
 <style>
