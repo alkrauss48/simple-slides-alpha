@@ -3,6 +3,7 @@ import { ref, onMounted } from 'vue'
 import PreloadContent from './components/PreloadContent.vue';
 import SlideView from './components/SlideView.vue';
 import * as DOMPurify from 'dompurify';
+import { marked } from 'marked';
 
 const data = ref([]);
 const params = ref({});
@@ -30,9 +31,12 @@ onMounted(async () => {
 
   const body = await response.text();
 
-  const parsedBody = DOMPurify
-    .sanitize(body)
-    .split("\n\n");
+  const parsedBody = body
+    .split("\n\n")
+    .map((content) => {
+      const parsed = marked.parse(content);
+      return DOMPurify.sanitize(parsed);
+    });
 
   data.value = parsedBody;
 });

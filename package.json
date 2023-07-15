@@ -10,12 +10,14 @@
   "dependencies": {
     "core-js": "^3.8.3",
     "dompurify": "^3.0.5",
+    "marked": "^5.1.1",
     "textfit": "^2.4.0",
     "vue": "^3.2.13"
   },
   "devDependencies": {
     "@babel/core": "^7.12.16",
     "@babel/eslint-parser": "^7.12.16",
+    "@babel/plugin-transform-private-methods": "^7.22.5",
     "@typescript-eslint/eslint-plugin": "^5.4.0",
     "@typescript-eslint/parser": "^5.4.0",
     "@vue/cli-plugin-babel": "~5.0.0",

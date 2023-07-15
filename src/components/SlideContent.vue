@@ -52,10 +52,26 @@ onMounted(runTextFit);
   height: 100%;
 }
 
+#slideContent .textFitted > p {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+}
+
 #slideContent img {
   display: block;
   margin: 0 auto;
   max-width: 100%;
   max-height: 100%;
+}
+
+#slideContent ul{
+  padding-left: 10%;
+}
+
+#slideContent ol {
+  padding-left: 20%;
 }
 </style>
