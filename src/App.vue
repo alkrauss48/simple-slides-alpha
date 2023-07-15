@@ -1,18 +1,10 @@
-<template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
-</template>
-
-<script>
-import HelloWorld from './components/HelloWorld.vue'
-
-export default {
-  name: 'App',
-  components: {
-    HelloWorld
-  }
-}
+<script setup lang="ts">
+import SlideView from './components/SlideView.vue';
 </script>
+
+<template>
+  <SlideView msg="Welcome to Your Vue.js + TypeScript App"/>
+</template>
 
 <style>
 #app {
