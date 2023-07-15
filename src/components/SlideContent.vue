@@ -27,8 +27,8 @@ onMounted(runTextFit);
 
 <style>
 #slideContent {
-  height: 90%;
-  width: 90%;
+  height: 80%;
+  width: 80%;
   text-align: center;
   display: flex;
   align-items: center;
@@ -52,19 +52,11 @@ onMounted(runTextFit);
   height: 100%;
 }
 
-#slideContent .textFitted > p {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-  height: 100%;
-}
-
 #slideContent img {
   display: block;
   margin: 0 auto;
   max-width: 100%;
-  max-height: 100%;
+  max-height: 80vh;
 }
 
 #slideContent ul{
