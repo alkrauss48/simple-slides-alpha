@@ -25,26 +25,30 @@ const incrementContent = (count: number) => {
     return;
   }
 
-
   index.value = index.value + count;
 };
 
 document.addEventListener('keydown', function(event) {
   const { key } = event;
 
-  switch (key) {
-    case "ArrowLeft":
-      incrementContent(-1);
-      break;
-    case "ArrowRight":
-      incrementContent(1);
-      break;
-    case "ArrowUp":
-      incrementContent(-1);
-      break;
-    case "ArrowDown":
-      incrementContent(1);
-      break;
+  const incrementors = [
+    "ArrowDown",
+    "ArrowRight",
+    "j",
+    "l",
+  ];
+
+  const decrementors = [
+    "ArrowUp",
+    "ArrowLeft",
+    "k",
+    "h",
+  ];
+
+  if (incrementors.includes(key)) {
+    incrementContent(1);
+  } else if (decrementors.includes(key)) {
+    incrementContent(-1);
   }
 });
 </script>

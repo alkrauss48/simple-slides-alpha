@@ -31,6 +31,9 @@ onMounted(runTextFit);
   height: 90%;
   width: 90%;
   text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 #slideContent * {
