@@ -3,16 +3,28 @@ import { ref, onMounted } from 'vue'
 import SlideView from './components/SlideView.vue';
 
 const data = ref([]);
+const params = ref({});
+
+const getQueryParams = () => {
+  const urlParams = new URLSearchParams(window.location.search);
+
+  const indexParam = urlParams.get('index');
+  const index = indexParam ? parseInt(indexParam) : 0;
+
+  return {
+    slidesUrl: urlParams.get('slides'),
+    index,
+  };
+};
 
 onMounted(async () => {
-  const urlParams = new URLSearchParams(window.location.search);
-  const slideUrl = urlParams.get('slides');
+  params.value = getQueryParams();
 
-  if (!slideUrl) {
+  if (!params.value.slidesUrl) {
     return;
   }
 
-  const response = await fetch(slideUrl);
+  const response = await fetch(params.value.slidesUrl);
 
   const body = await response.text();
 
@@ -23,7 +35,11 @@ onMounted(async () => {
 </script>
 
 <template>
-  <SlideView v-if="data.length > 0" :data="data"/>
+  <SlideView
+    v-if="data.length > 0"
+    :data="data"
+    :index="params.index"
+  />
 </template>
 
 <style>

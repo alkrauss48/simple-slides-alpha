@@ -7,26 +7,42 @@ const props = defineProps({
     type: Array,
     required: true,
   },
+  index: {
+    type: Number,
+    required: true,
+  },
 });
 
-const index = ref(0);
+const index = ref(props.index);
 
 const content = computed(() => {
   return props.data[index.value];
 });
 
-const incrementContent = (count: number) => {
+const getNewIndex = (count: number) => {
   if (index.value + count < 0) {
-    index.value = 0;
-    return;
+    return 0;
   }
 
   if (index.value + count >= props.data.length) {
-    index.value = props.data.length - 1;
+    return props.data.length - 1;
+  }
+
+  return index.value + count;
+};
+
+const incrementContent = (count: number) => {
+  const newIndex = getNewIndex(count);
+
+  if (index.value === newIndex) {
     return;
   }
 
-  index.value = index.value + count;
+  index.value = newIndex;
+
+  const url = new URL(location.href);
+  url.searchParams.set('index', newIndex);
+  history.replaceState(null, '', url)
 };
 
 document.addEventListener('keydown', function(event) {
@@ -55,9 +71,9 @@ document.addEventListener('keydown', function(event) {
   } else if (key === 'b') {
     incrementContent(-5);
   } else if (key === '$') {
-    index.value = props.data.length - 1;
+    incrementContent(props.data.length);
   } else if (key === '0') {
-    index.value = 0;
+    incrementContent(-1 * props.data.length);
   }
 });
 </script>
