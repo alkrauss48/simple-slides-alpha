@@ -9,6 +9,7 @@
   },
   "dependencies": {
     "core-js": "^3.8.3",
+    "dompurify": "^3.0.5",
     "textfit": "^2.4.0",
     "vue": "^3.2.13"
   },
