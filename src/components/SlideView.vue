@@ -45,7 +45,7 @@ const incrementContent = (count: number) => {
   history.replaceState(null, '', url)
 };
 
-document.addEventListener('keydown', function(event) {
+window.addEventListener('keydown', function(event) {
   const { key } = event;
 
   const incrementors = [
@@ -75,6 +75,18 @@ document.addEventListener('keydown', function(event) {
   } else if (key === '0') {
     incrementContent(-1 * props.data.length);
   }
+});
+
+window.addEventListener('click', function(event) {
+  const BACK_BOUNDARY = .25;
+  const { clientX } = event;
+
+  if (clientX < (window.innerWidth * BACK_BOUNDARY)) {
+    incrementContent(-1);
+    return;
+  }
+
+  incrementContent(1);
 });
 </script>
 
