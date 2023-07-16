@@ -66,4 +66,8 @@ onMounted(runTextFit);
 #slideContent ol {
   padding-left: 25%;
 }
+
+#slideContent blockquote {
+  font-style: italic;
+}
 </style>
