@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { ref, computed } from 'vue'
+import ProgressBar from './ProgressBar.vue';
 import ProgressLabel from './ProgressLabel.vue';
 import SlideContent from './SlideContent.vue';
 
@@ -95,6 +96,10 @@ window.addEventListener('click', function(event) {
   <div id="slide">
     <SlideContent :key="content" :content="content" />
     <ProgressLabel
+      :current="index + 1"
+      :total="data.length"
+    />
+    <ProgressBar
       :current="index + 1"
       :total="data.length"
     />
