@@ -3,22 +3,31 @@ import { ref, computed } from 'vue'
 import ProgressBar from './ProgressBar.vue';
 import ProgressLabel from './ProgressLabel.vue';
 import SlideContent from './SlideContent.vue';
+import { PROGRESS_BAR, PROGRESS_LABEL } from '../constants/progressTypes';
 
 const props = defineProps({
   data: {
     type: Array,
     required: true,
   },
-  index: {
+  params: {
     type: Number,
     required: true,
   },
 });
 
-const index = ref(props.index);
+const index = ref(props.params.index);
 
 const content = computed(() => {
   return props.data[index.value];
+});
+
+const showProgressBar = computed(() => {
+  return props.params.progress === PROGRESS_BAR;
+});
+
+const showProgressLabel = computed(() => {
+  return props.params.progress === PROGRESS_LABEL;
 });
 
 const getNewIndex = (count: number) => {
@@ -96,10 +105,12 @@ window.addEventListener('click', function(event) {
   <div id="slide">
     <SlideContent :key="content" :content="content" />
     <ProgressLabel
+      v-if="showProgressLabel"
       :current="index + 1"
       :total="data.length"
     />
     <ProgressBar
+      v-if="showProgressBar"
       :current="index + 1"
       :total="data.length"
     />

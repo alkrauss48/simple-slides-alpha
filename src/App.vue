@@ -2,6 +2,7 @@
 import { ref, onMounted } from 'vue'
 import PreloadContent from './components/PreloadContent.vue';
 import SlideView from './components/SlideView.vue';
+import { PROGRESS_BAR } from './constants/progressTypes';
 import * as DOMPurify from 'dompurify';
 import { marked } from 'marked';
 
@@ -10,11 +11,16 @@ const params = ref({});
 
 const getQueryParams = () => {
   const urlParams = new URLSearchParams(window.location.search);
+
   const indexParam = urlParams.get('index');
+  const index = indexParam ? parseInt(indexParam) : 0
+
+  const progress = urlParams.get('progress') ?? PROGRESS_BAR;
 
   return {
     slidesUrl: urlParams.get('slides'),
-    index: indexParam ? parseInt(indexParam) : 0
+    progress,
+    index,
   };
 };
 
@@ -45,7 +51,7 @@ onMounted(async () => {
     <PreloadContent :data="data" />
     <SlideView
       :data="data"
-      :index="params.index"
+      :params="params"
     />
   </div>
 </template>
