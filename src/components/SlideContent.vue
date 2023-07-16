@@ -64,6 +64,6 @@ onMounted(runTextFit);
 }
 
 #slideContent ol {
-  padding-left: 20%;
+  padding-left: 25%;
 }
 </style>
