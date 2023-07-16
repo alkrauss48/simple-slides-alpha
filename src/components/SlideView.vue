@@ -56,6 +56,17 @@ const incrementContent = (count: number) => {
   history.replaceState(null, '', url)
 };
 
+const handleTouchOrClick = (clientX: number) => {
+  const BACK_BOUNDARY = .25;
+
+  if (clientX < (window.innerWidth * BACK_BOUNDARY)) {
+    incrementContent(-1);
+    return;
+  }
+
+  incrementContent(1);
+};
+
 window.addEventListener('keydown', function(event) {
   const { key } = event;
 
@@ -88,16 +99,13 @@ window.addEventListener('keydown', function(event) {
   }
 });
 
-window.addEventListener('click', function(event) {
-  const BACK_BOUNDARY = .25;
-  const { clientX } = event;
+// TODO: Either refactor this or remove it.
+// window.addEventListener('click', function(event) {
+//   handleTouchOrClick(event.clientX);
+// });
 
-  if (clientX < (window.innerWidth * BACK_BOUNDARY)) {
-    incrementContent(-1);
-    return;
-  }
-
-  incrementContent(1);
+window.addEventListener('touchend', function(event) {
+  handleTouchOrClick(event.clientX);
 });
 </script>
 
