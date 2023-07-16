@@ -10,13 +10,11 @@ const params = ref({});
 
 const getQueryParams = () => {
   const urlParams = new URLSearchParams(window.location.search);
-
   const indexParam = urlParams.get('index');
-  const index = indexParam ? parseInt(indexParam) : 0;
 
   return {
     slidesUrl: urlParams.get('slides'),
-    index,
+    index: indexParam ? parseInt(indexParam) : 0
   };
 };
 
