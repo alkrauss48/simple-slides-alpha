@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { ref, computed } from 'vue'
+import ProgressLabel from './ProgressLabel.vue';
 import SlideContent from './SlideContent.vue';
 
 const props = defineProps({
@@ -93,6 +94,10 @@ window.addEventListener('click', function(event) {
 <template>
   <div id="slide">
     <SlideContent :key="content" :content="content" />
+    <ProgressLabel
+      :current="index + 1"
+      :total="data.length"
+    />
   </div>
 </template>
 
