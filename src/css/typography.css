@@ -56,3 +56,12 @@
   padding: .5rem 1rem;
   text-align: left;
 }
+
+.typography a {
+  color: #671967;
+}
+
+.typography a:hover, .typography a:focus {
+  color: #800080;
+  text-decoration: underline;
+}
