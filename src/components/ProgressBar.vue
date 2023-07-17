@@ -14,17 +14,7 @@ defineProps({
 
 <template>
   <aside
-    class="progress-bar"
+    class="bg-gray-300 fixed bottom-0 left-0 h-2"
     :style="{width: `${current / total * 100}%`}"
   ></aside>
 </template>
-
-<style scoped>
-.progress-bar {
-  background-color: lightgray;
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  height: .5rem;
-}
-</style>

@@ -56,17 +56,6 @@ const incrementContent = (count: number) => {
   history.replaceState(null, '', url)
 };
 
-const handleTouchOrClick = (clientX: number) => {
-  const BACK_BOUNDARY = .25;
-
-  if (clientX < (window.innerWidth * BACK_BOUNDARY)) {
-    incrementContent(-1);
-    return;
-  }
-
-  incrementContent(1);
-};
-
 window.addEventListener('keydown', function(event) {
   const { key } = event;
 
@@ -98,19 +87,10 @@ window.addEventListener('keydown', function(event) {
     incrementContent(-1 * props.data.length);
   }
 });
-
-// TODO: Either refactor this or remove it.
-// window.addEventListener('click', function(event) {
-//   handleTouchOrClick(event.clientX);
-// });
-
-window.addEventListener('touchend', function(event) {
-  handleTouchOrClick(event.clientX);
-});
 </script>
 
 <template>
-  <div id="slide">
+  <div class="w-full h-screen flex justify-center items-center">
     <SlideContent :key="content" :content="content" />
     <ProgressLabel
       v-if="showProgressLabel"
@@ -124,13 +104,3 @@ window.addEventListener('touchend', function(event) {
     />
   </div>
 </template>
-
-<style scoped>
-#slide {
-  height: 100vh;
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-</style>

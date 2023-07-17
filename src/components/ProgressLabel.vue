@@ -13,22 +13,12 @@ defineProps({
 </script>
 
 <template>
-  <aside class="progress-label">
+  <aside class="
+    [ text-white bg-gray-400 ]
+    [ fixed bottom-0 right-0 ]
+    [ h-8 w-24 ]
+    [ flex justify-center items-center ]
+  ">
     <p>{{ current }} / {{ total }}</p>
   </aside>
 </template>
-
-<style scoped>
-.progress-label {
-  color: white;
-  background-color: lightgray;
-  position: fixed;
-  bottom: 0;
-  right: 0;
-  width: 6rem;
-  height: 2rem;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-</style>

@@ -21,53 +21,13 @@ onMounted(runTextFit);
 </script>
 
 <template>
-  <div id="slideContent" ref="slideContent" v-html="content">
-  </div>
+  <div
+    class="
+      typography
+      [ h-4/5 w-4/5 text-center ]
+      [ flex justify-center items-center ]
+    "
+    ref="slideContent"
+    v-html="content"
+  ></div>
 </template>
-
-<style>
-#slideContent {
-  height: 80%;
-  width: 80%;
-  text-align: center;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-#slideContent * {
-  margin: 0;
-  text-align: center;
-}
-
-#slideContent li {
-  text-align: left;
-}
-
-#slideContent .textFitted {
-  display: flex !important;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-  height: 100%;
-}
-
-#slideContent img {
-  display: block;
-  margin: 0 auto;
-  max-width: 100%;
-  max-height: 80vh;
-}
-
-#slideContent ul{
-  padding-left: 10%;
-}
-
-#slideContent ol {
-  padding-left: 25%;
-}
-
-#slideContent blockquote {
-  font-style: italic;
-}
-</style>

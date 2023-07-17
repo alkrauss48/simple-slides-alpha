@@ -9,24 +9,12 @@ defineProps({
 </script>
 
 <template>
-  <aside id="preload" aria-hidden="true">
+  <aside class="absolute right-[200%] w-0 h-0 overflow-hidden" aria-hidden="true">
     <div
       v-for="(slide, index) in data"
       :key="index"
+      class="absolute top-0 left-0"
       v-html="slide"
     ></div>
   </aside>
 </template>
-
-<style scoped>
-#preload {
-  position: absolute;
-  right: 200%
-}
-
-#preload .slide {
-  position: absolute;
-  top: 0;
-  left: 0;
-}
-</style>
