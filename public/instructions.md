@@ -3,4 +3,134 @@ Welcome to
 Press the right arrow key
 to continue
 
-TODO
+Press the left arrow key
+to go back a slide
+
+Before we review how *you*
+can create your own slides...
+
+We need to review how
+**Takahashi Slides** itself
+works
+
+The [Takahashi Method](https://en.wikipedia.org/wiki/Takahashi_method) is
+a way to present slides
+effectively and minimalistically
+
+This is where **Takahashi Slides**
+gets its name
+
+Each slide will expand
+the content to its
+maximum possible size
+
+This means less content
+per slide
+
+And faster changing of slides
+
+Both of which keep
+your audience engaged
+
+The layout is handled
+automatically
+
+So you can focus more
+on the content itself
+
+Each slide is
+built with **markdown**
+
+So you can do things like:
+
+# Headings
+
+- bulleted
+- lists
+
+Images
+
+![Clevyr logo](/images/clevyr.png)
+
+```
+const code = "your nifty code here";
+code++; // wat
+```
+
+And whatever else
+markdown supports!
+
+Notice the bar on the bottom
+of the screen too
+
+It measures your progress
+
+You can refresh the page,
+and your current slide will stick. Try it!
+
+You can even share the URL,
+and it will load at the current slide.
+
+Finally, there are a few more
+hot keys than just the arrow keys:
+
+```
+j or l = go forward 1 slide
+h or k = go back 1 slide
+f = go forward 5 slides
+b = go back 5 slides
+0 = go to start
+$ = go to end
+```
+
+Now, let's show you
+how to use **Takahashi Slides**
+for your own slides!
+
+There's 2 steps:
+
+1. Create a markdown file
+somewhere with a public URL
+
+The file can exist anywhere
+
+[These instructions](/instructions.md) themselves are
+a markdown file, so you can use
+them as an example
+
+2. Next, add a `slides` query parameter
+set to public URL of your markdown file
+
+That means the URL up top should look like this:
+
+```
+https://slides.thecodeboss.dev?slides=your-url
+```
+
+[Here's an example](https://slides.thecodeboss.dev/?slides=https%3A%2F%2Fraw.githubusercontent.com%2Falkrauss48%2Ftalks%2Fmaster%2Fshecodes-workshop-intro%2Fpresentation.md) of
+a different presentation
+
+Don't worry, we sanitize your markdown
+content
+
+So your audience doesn't have to worry
+about pesky cross-site scripting
+
+Thanks for reading
+these instructions!
+
+You have a great
+day now, buh bye
+
+And go create something awesome!
+
+Special thanks to my
+original inspiration:
+
+A similar desktop-only tool
+called [sent](https://tools.suckless.org/sent/)
+
+Now, the next slide is
+the last slide for real
+
+![Pun Dog](/images/pun-dog.jpg)
