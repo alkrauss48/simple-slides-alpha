@@ -9,6 +9,7 @@
 
 .typography .textFitted {
   display: flex !important;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
   width: 100%;
@@ -43,4 +44,15 @@
 .typography h5,
 .typography h6 {
   font-weight: bold;
+}
+
+.typography code {
+  background-color: #e2e2e2;
+  padding: .25rem;
+}
+
+.typography pre {
+  background-color: #e2e2e2;
+  padding: .5rem 1rem;
+  text-align: left;
 }
