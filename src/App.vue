@@ -27,11 +27,9 @@ const getQueryParams = () => {
 onMounted(async () => {
   params.value = getQueryParams();
 
-  if (!params.value.slidesUrl) {
-    return;
-  }
+  const slidesUrl = params.value.slidesUrl ?? 'instructions.md';
 
-  const response = await fetch(params.value.slidesUrl);
+  const response = await fetch(slidesUrl);
 
   const body = await response.text();
 
