@@ -1,4 +1,4 @@
-# takahashi-slides
+# simple-slides
 
 ## Project setup
 ```

@@ -2,7 +2,7 @@ version: "3.9"
 
 services:
   frontend:
-    # image: alkrauss48/takahashi-slides:dev-main
+    # image: alkrauss48/simple-slides:dev-main
     # platform: linux/amd64
     build:
       context: .

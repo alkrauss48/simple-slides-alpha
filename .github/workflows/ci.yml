@@ -37,7 +37,7 @@ jobs:
         id: meta
         uses: docker/metadata-action@v4
         with:
-          images: alkrauss48/takahashi-slides
+          images: alkrauss48/simple-slides
           tags: |
             type=ref,prefix=dev-,event=branch
             type=semver,pattern={{version}}
