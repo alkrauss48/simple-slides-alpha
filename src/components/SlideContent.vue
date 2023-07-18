@@ -9,21 +9,32 @@ defineProps({
   },
 });
 
-const slideContent = ref(null)
+const slideContent = ref(null);
 
 const runTextFit = () => {
   textfit(slideContent.value, {
     maxFontSize: 500,
   });
-}
+};
 
-onMounted(runTextFit);
+const openAllLinksInNewTab = () => {
+    document
+      .querySelectorAll(".slide-content a")
+      .forEach((element) => {
+        element.setAttribute("target", "_blank");
+      });
+};
+
+onMounted(() => {
+  runTextFit();
+  openAllLinksInNewTab();
+});
 </script>
 
 <template>
   <div
     class="
-      typography
+      slide-content typography
       [ h-4/5 w-4/5 text-center ]
       [ flex justify-center items-center ]
     "
