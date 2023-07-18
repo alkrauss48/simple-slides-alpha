@@ -24,12 +24,12 @@
 }
 
 .typography ul{
-  padding-left: 10%;
+  padding-left: 1em;
   list-style-type: disc;
 }
 
 .typography ol {
-  padding-left: 25%;
+  padding-left: 1.5em;
   list-style-type: decimal;
 }
 
