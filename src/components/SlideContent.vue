@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref, onMounted } from 'vue'
-import textfit from 'textfit';
+import textfit from '../utils/textFit';
 
 defineProps({
   content: {
@@ -24,6 +24,10 @@ const openAllLinksInNewTab = () => {
         element.setAttribute("target", "_blank");
       });
 };
+
+window.addEventListener('resize', () => {
+  runTextFit();
+});
 
 onMounted(() => {
   runTextFit();
