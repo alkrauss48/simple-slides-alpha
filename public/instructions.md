@@ -1,5 +1,5 @@
 Welcome to
-# Takahashi Slides
+# Simple Slides
 Press the right arrow key
 to continue
 
@@ -10,15 +10,16 @@ Before we review how *you*
 can create your own slides...
 
 We need to review how
-**Takahashi Slides** itself
+**Simple Slides** itself
 works
 
-The [Takahashi Method](https://en.wikipedia.org/wiki/Takahashi_method) is
-a way to present slides
-effectively and minimalistically
+**Simple Slides** is based on
+the Takahashi Method
 
-This is where **Takahashi Slides**
-gets its name
+The [Takahashi Method](https://en.wikipedia.org/wiki/Takahashi_method)
+is a way to present slides
+minimalistically, favoring
+text content
 
 Each slide will expand
 the content to its
@@ -44,9 +45,15 @@ built with **markdown**
 So you can do things like:
 
 # Headings
+On top of content
 
 - bulleted
 - lists
+
+1. or numbered
+1. if that's
+1. how you
+1. roll
 
 Images
 
@@ -69,14 +76,14 @@ You can refresh the page,
 and your current slide will stick. Try it!
 
 You can even share the URL,
-and it will load at the current slide.
+and it will load at the current slide
 
 Finally, there are a few more
 hot keys than just the arrow keys:
 
 ```
 j or l = go forward 1 slide
-h or k = go back 1 slide
+k or h = go back 1 slide
 f = go forward 5 slides
 b = go back 5 slides
 0 = go to start
@@ -84,10 +91,10 @@ $ = go to end
 ```
 
 Now, let's show you
-how to use **Takahashi Slides**
+how to use **Simple Slides**
 for your own slides!
 
-There's 2 steps:
+There's only 2 steps:
 
 1. Create a markdown file
 somewhere with a public URL
@@ -104,10 +111,10 @@ set to public URL of your markdown file
 That means the URL up top should look like this:
 
 ```
-https://slides.thecodeboss.dev?slides=your-url
+https://shortslides.dev?slides=your-url
 ```
 
-[Here's an example](https://slides.thecodeboss.dev/?slides=https%3A%2F%2Fraw.githubusercontent.com%2Falkrauss48%2Ftalks%2Fmaster%2Fshecodes-workshop-intro%2Fpresentation.md) of
+[Here's an example](https://shortslides.dev/?slides=https%3A%2F%2Fraw.githubusercontent.com%2Falkrauss48%2Ftalks%2Fmaster%2Fshecodes-workshop-intro%2Fpresentation.md) of
 a different presentation
 
 Don't worry, we sanitize your markdown
