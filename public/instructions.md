@@ -7,7 +7,7 @@ Press the left arrow key
 to go back a slide
 
 Before we review how *you*
-can create your own slides...
+can create your own simple slides...
 
 We need to review how
 **Simple Slides** itself
@@ -17,15 +17,20 @@ works
 the Takahashi Method
 
 The [Takahashi Method](https://en.wikipedia.org/wiki/Takahashi_method)
-is a way to present slides
-minimalistically, favoring
-text content
+is a way to present simple and elegant slides
+that favor text content
 
-Each slide will expand
+With **Simple Slides**, each slide will expand
 the content to its
 maximum possible size
 
-This means less content
+Based on your browser window
+
+Resize your window and try it!
+
+See!
+
+This style means less content
 per slide
 
 And faster changing of slides
@@ -39,8 +44,8 @@ automatically
 So you can focus more
 on the content itself
 
-Each slide is
-built with **markdown**
+**Simple Slides** uses
+**markdown** to render your slides
 
 So you can do things like:
 
@@ -50,10 +55,9 @@ On top of content
 - bulleted
 - lists
 
-1. or numbered
+1. or numbered lists
 1. if that's
-1. how you
-1. roll
+1. how you roll
 
 Images
 
@@ -106,15 +110,15 @@ a markdown file, so you can use
 them as an example
 
 2. Next, add a `slides` query parameter
-set to public URL of your markdown file
+set to the public URL of your markdown file
 
 That means the URL up top should look like this:
 
 ```
-https://shortslides.dev?slides=your-url
+https://simpleslides.dev?slides=your-url
 ```
 
-[Here's an example](https://shortslides.dev/?slides=https%3A%2F%2Fraw.githubusercontent.com%2Falkrauss48%2Ftalks%2Fmaster%2Fshecodes-workshop-intro%2Fpresentation.md) of
+[Here's an example](https://simpleslides.dev/?slides=https%3A%2F%2Fraw.githubusercontent.com%2Falkrauss48%2Ftalks%2Fmaster%2Fshecodes-workshop-intro%2Fpresentation.md) of
 a different presentation
 
 Don't worry, we sanitize your markdown
