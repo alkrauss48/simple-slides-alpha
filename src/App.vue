@@ -5,20 +5,19 @@ import SlideView from './components/SlideView.vue';
 import { PROGRESS_BAR } from './constants/progressTypes';
 import * as DOMPurify from 'dompurify';
 import { marked } from 'marked';
+import { useRoute } from 'vue-router'
 
 const data = ref([]);
 const params = ref({});
+const route = useRoute();
 
 const getQueryParams = () => {
-  const urlParams = new URLSearchParams(window.location.search);
-
-  const indexParam = urlParams.get('index');
+  const indexParam = route.query.index;
   const index = indexParam ? parseInt(indexParam) : 0
 
-  const progress = urlParams.get('progress') ?? PROGRESS_BAR;
+  const progress = route.query.progress ?? PROGRESS_BAR;
 
   return {
-    slidesUrl: urlParams.get('slides'),
     progress,
     index,
   };
@@ -27,7 +26,9 @@ const getQueryParams = () => {
 onMounted(async () => {
   params.value = getQueryParams();
 
-  const slidesUrl = params.value.slidesUrl ?? 'instructions.md';
+  const slidesUrl = route.name == 'home'
+    ? 'instructions.md'
+    : atob(route.params.slides);
 
   const response = await fetch(slidesUrl);
 
