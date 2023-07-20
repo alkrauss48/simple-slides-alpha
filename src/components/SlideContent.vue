@@ -6,15 +6,15 @@ defineProps<{
   content: string,
 }>();
 
-const slideContent = ref(null);
+const slideContent = ref<HTMLDivElement>();
 
-const runTextFit = () => {
+const runTextFit = () : void => {
   textfit(slideContent.value, {
     maxFontSize: 500,
   });
 };
 
-const openAllLinksInNewTab = () => {
+const openAllLinksInNewTab = () : void => {
     document
       .querySelectorAll(".slide-content a")
       .forEach((element) => {
@@ -22,11 +22,11 @@ const openAllLinksInNewTab = () => {
       });
 };
 
-window.addEventListener('resize', () => {
+window.addEventListener('resize', () : void => {
   runTextFit();
 });
 
-onMounted(() => {
+onMounted(() : void => {
   runTextFit();
   openAllLinksInNewTab();
 });

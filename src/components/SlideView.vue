@@ -10,21 +10,21 @@ const props = defineProps<{
   params: object,
 }>();
 
-const index = ref(props.params.index);
+const index = ref<number>(props.params.index);
 
-const content = computed(() => {
+const content = computed<string>(() => {
   return props.data[index.value];
 });
 
-const showProgressBar = computed(() => {
+const showProgressBar = computed<boolean>(() => {
   return props.params.progress === PROGRESS_BAR;
 });
 
-const showProgressLabel = computed(() => {
+const showProgressLabel = computed<boolean>(() => {
   return props.params.progress === PROGRESS_LABEL;
 });
 
-const getNewIndex = (count: number) => {
+const getNewIndex = (count: number) : number => {
   if (index.value + count < 0) {
     return 0;
   }
@@ -36,7 +36,7 @@ const getNewIndex = (count: number) => {
   return index.value + count;
 };
 
-const incrementContent = (count: number) => {
+const incrementContent = (count: number) : void => {
   const newIndex = getNewIndex(count);
 
   if (index.value === newIndex) {
@@ -50,7 +50,7 @@ const incrementContent = (count: number) => {
   history.replaceState(null, '', url)
 };
 
-window.addEventListener('keydown', function(event) {
+window.addEventListener('keydown', (event) : void => {
   const { key } = event;
 
   const incrementors = [
