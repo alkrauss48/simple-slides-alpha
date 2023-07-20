@@ -36,7 +36,11 @@ onMounted(async () => {
   const parsedBody = body
     .split("\n\n")
     .map((content) => {
-      const parsed = marked.parse(content);
+      const parsed = marked.parse(content, {
+        headerIds: false,
+        mangle: false,
+      });
+
       return DOMPurify.sanitize(parsed);
     });
 
