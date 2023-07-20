@@ -5,16 +5,10 @@ import ProgressLabel from './ProgressLabel.vue';
 import SlideContent from './SlideContent.vue';
 import { PROGRESS_BAR, PROGRESS_LABEL } from '../constants/progressTypes';
 
-const props = defineProps({
-  data: {
-    type: Array,
-    required: true,
-  },
-  params: {
-    type: Number,
-    required: true,
-  },
-});
+const props = defineProps<{
+  data: Array,
+  params: object,
+}>();
 
 const index = ref(props.params.index);
 

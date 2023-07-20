@@ -1,11 +1,8 @@
 <script setup lang="ts">
 
-defineProps({
-  data: {
-    type: Array,
-    required: true,
-  },
-});
+defineProps<{
+  data: Array,
+}>();
 </script>
 
 <template>

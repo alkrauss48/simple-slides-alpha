@@ -2,12 +2,9 @@
 import { ref, onMounted } from 'vue'
 import textfit from '../utils/textFit';
 
-defineProps({
-  content: {
-    type: String,
-    required: false,
-  },
-});
+defineProps<{
+  content: string,
+}>();
 
 const slideContent = ref(null);
 

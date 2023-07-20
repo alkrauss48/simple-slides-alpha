@@ -1,15 +1,9 @@
 <script setup lang="ts">
 
-defineProps({
-  current: {
-    type: Number,
-    required: true,
-  },
-  total: {
-    type: Number,
-    required: true,
-  },
-});
+defineProps<{
+  current: number,
+  total: number,
+}>();
 </script>
 
 <template>
