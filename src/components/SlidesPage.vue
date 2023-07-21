@@ -23,12 +23,20 @@ const getQueryParams = () => {
   };
 };
 
+const getSlidesUrl = () : string => {
+  if (route.name == 'home') {
+    localStorage.setItem('slidesUrl', '');
+    return 'instructions.md';
+  }
+  const url = atob(route.params.slides);
+
+  localStorage.setItem('slidesUrl', url);
+  return url;
+};
+
 onMounted(async () => {
   params.value = getQueryParams();
-
-  const slidesUrl = route.name == 'home'
-    ? 'instructions.md'
-    : atob(route.params.slides);
+  const slidesUrl = getSlidesUrl();
 
   const response = await fetch(slidesUrl);
 

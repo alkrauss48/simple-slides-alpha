@@ -63,6 +63,10 @@ const incrementContent = (count: number) : void => {
 window.addEventListener('keydown', (event) : void => {
   const { key } = event;
 
+  if (router.currentRoute.value.name == 'settings') {
+    return;
+  }
+
   if (key == "Enter" || key == " ") {
     var next = document.getElementById('next');
     var previous = document.getElementById('previous');
