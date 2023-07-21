@@ -82,6 +82,7 @@ window.addEventListener('keydown', (event) : void => {
   ];
 
   const decrementors = [
+    "Backspace",
     "ArrowUp",
     "ArrowLeft",
     "k",
