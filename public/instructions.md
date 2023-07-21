@@ -109,16 +109,18 @@ The file can exist anywhere
 a markdown file, so you can use
 them as an example
 
-2. Next, add a `slides` query parameter
-set to the public URL of your markdown file
+2. Click that settings button in the top right corner
 
-That means the URL up top should look like this:
+<span>&#8599;&#65039;</span>
+<br />Somewhere over there
 
-```
-https://simpleslides.dev?slides=your-url
-```
+Paste in the link to your markdown file
 
-[Here's an example](https://simpleslides.dev/?slides=https%3A%2F%2Fraw.githubusercontent.com%2Falkrauss48%2Ftalks%2Fmaster%2Fshecodes-workshop-intro%2Fpresentation.md) of
+And click present
+
+You did it!
+
+[Here's an example](https://simpleslides.dev/aHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL2Fsa3JhdXNzNDgvdGFsa3MvbWFzdGVyL3NoZWNvZGVzLXdvcmtzaG9wLWludHJvL3ByZXNlbnRhdGlvbi5tZA==) of
 a different presentation
 
 Don't worry, we sanitize your markdown
