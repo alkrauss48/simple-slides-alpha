@@ -1,60 +1,7 @@
 <script setup lang="ts">
-import { ref, onMounted } from 'vue'
-import PreloadContent from './components/PreloadContent.vue';
-import SlideView from './components/SlideView.vue';
-import { PROGRESS_BAR } from './constants/progressTypes';
-import * as DOMPurify from 'dompurify';
-import { marked } from 'marked';
-import { useRoute } from 'vue-router'
 
-const data = ref([]);
-const params = ref({});
-const route = useRoute();
-
-const getQueryParams = () => {
-  const indexParam = route.query.index;
-  const index = indexParam ? parseInt(indexParam) : 0
-
-  const progress = route.query.progress ?? PROGRESS_BAR;
-
-  return {
-    progress,
-    index,
-  };
-};
-
-onMounted(async () => {
-  params.value = getQueryParams();
-
-  const slidesUrl = route.name == 'home'
-    ? 'instructions.md'
-    : atob(route.params.slides);
-
-  const response = await fetch(slidesUrl);
-
-  const body = await response.text();
-
-  const parsedBody = body
-    .split("\n\n")
-    .map((content) => {
-      const parsed = marked.parse(content, {
-        headerIds: false,
-        mangle: false,
-      });
-
-      return DOMPurify.sanitize(parsed);
-    });
-
-  data.value = parsedBody;
-});
 </script>
 
 <template>
-  <div v-if="data.length > 0">
-    <PreloadContent :data="data" />
-    <SlideView
-      :data="data"
-      :params="params"
-    />
-  </div>
+  <router-view/>
 </template>
