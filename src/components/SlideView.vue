@@ -4,6 +4,9 @@ import ProgressBar from './ProgressBar.vue';
 import ProgressLabel from './ProgressLabel.vue';
 import SlideContent from './SlideContent.vue';
 import { PROGRESS_BAR, PROGRESS_LABEL } from '../constants/progressTypes';
+import { useRouter } from 'vue-router'
+
+const router = useRouter();
 
 const props = defineProps<{
   data: Array,
@@ -45,9 +48,7 @@ const incrementContent = (count: number) : void => {
 
   index.value = newIndex;
 
-  const url = new URL(location.href);
-  url.searchParams.set('index', newIndex);
-  history.replaceState(null, '', url)
+  router.replace({ query: { index: newIndex }});
 };
 
 window.addEventListener('keydown', (event) : void => {
