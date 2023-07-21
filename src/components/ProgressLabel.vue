@@ -8,7 +8,7 @@ defineProps<{
 
 <template>
   <aside class="
-    [ text-white bg-gray-400 ]
+    [ text-black bg-gray-300 ]
     [ fixed bottom-0 left-1/2 -ml-12 ]
     [ h-8 w-24 ]
     [ flex justify-center items-center ]

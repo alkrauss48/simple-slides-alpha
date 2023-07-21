@@ -2,6 +2,7 @@
 import { ref, computed } from 'vue'
 import ProgressBar from './ProgressBar.vue';
 import ProgressLabel from './ProgressLabel.vue';
+import SlideArrows from './SlideArrows.vue';
 import SlideContent from './SlideContent.vue';
 import { PROGRESS_BAR, PROGRESS_LABEL } from '../constants/progressTypes';
 import { useRouter } from 'vue-router'
@@ -48,13 +49,32 @@ const incrementContent = (count: number) : void => {
 
   index.value = newIndex;
 
-  router.replace({ query: { index: newIndex }});
+  const query = {
+    index: newIndex,
+  };
+
+  if (showProgressLabel.value) {
+    query.progress = PROGRESS_LABEL;
+  }
+
+  router.replace({ query });
 };
 
 window.addEventListener('keydown', (event) : void => {
   const { key } = event;
 
+  if (key == "Enter" || key == " ") {
+    var next = document.getElementById('next');
+    var previous = document.getElementById('previous');
+
+    if (document.activeElement === next || document.activeElement === previous) {
+      return;
+    }
+  }
+
   const incrementors = [
+    "Enter",
+    " ",
     "ArrowDown",
     "ArrowRight",
     "j",
@@ -87,6 +107,10 @@ window.addEventListener('keydown', (event) : void => {
 <template>
   <div class="w-full h-screen flex justify-center items-center">
     <SlideContent :key="content" :content="content" />
+    <SlideArrows
+      @next="incrementContent(1)"
+      @previous="incrementContent(-1)"
+    />
     <ProgressLabel
       v-if="showProgressLabel"
       :current="index + 1"
