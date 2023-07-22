@@ -2,6 +2,7 @@
 import { ref, onMounted } from 'vue'
 import PreloadContent from './PreloadContent.vue';
 import SlideView from './SlideView.vue';
+import CogIcon from './icons/CogIcon.vue';
 import { PROGRESS_BAR } from '../constants/progressTypes';
 import * as DOMPurify from 'dompurify';
 import { marked } from 'marked';
@@ -62,11 +63,11 @@ onMounted(async () => {
     <router-link
       to="/settings"
       class="
-        fixed top-4 right-8
+        fixed top-6 right-8
         text-5xl text-gray-300
         hover:text-gray-500 focus:text-gray-500
       "
-    >&#9881;</router-link>
+      ><CogIcon /></router-link>
     <div v-if="data.length > 0">
       <PreloadContent :data="data" />
       <SlideView
