@@ -32,11 +32,12 @@ const go = () => {
     >✕</button>
     <form
       @submit.prevent="go()"
-      class="h-screen flex flex-col justify-center items-center"
+      class="h-[100dvh] flex flex-col justify-center items-center"
       action=""
       method="post"
     >
-        <label for="slidesUrl">Slides URL:</label>
+        <p class="w-64 mb-8">Enter the URL to your markdown file below, and then click present.</p>
+        <label for="slidesUrl">URL to your slides:</label>
         <textarea
           id="slidesUrl"
           class="w-64 p-2 my-4 border-solid border-2 border-black"

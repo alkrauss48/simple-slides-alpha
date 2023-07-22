@@ -110,7 +110,7 @@ window.addEventListener('keydown', (event) : void => {
 </script>
 
 <template>
-  <div class="w-full h-screen flex justify-center items-center">
+  <div class="w-full h-[100dvh] flex justify-center items-center">
     <SlideContent :key="content" :content="content" />
     <SlideArrows
       @next="incrementContent(1)"
