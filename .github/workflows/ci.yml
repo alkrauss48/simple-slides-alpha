@@ -3,8 +3,8 @@ name: ci
 on: push
 
 jobs:
-  eslint:
-    name: ESLint
+  lint:
+    name: Lint
     runs-on: ubuntu-latest
     steps:
       - name: Install Node.js
@@ -22,11 +22,11 @@ jobs:
             ${{ runner.os }}-node-
       - name: Install npm dependencies
         run: npm ci --prefer-offline
-      - name: Run ESLint
-        run: npm run lint
+      - name: Run Typescript lint
+        run: node_modules/.bin/vue-tsc
   build:
     name: Build
-    needs: ['eslint']
+    needs: ['lint']
     runs-on: ubuntu-latest
     steps:
       -

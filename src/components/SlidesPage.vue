@@ -4,7 +4,7 @@ import PreloadContent from './PreloadContent.vue';
 import SlideView from './SlideView.vue';
 import CogIcon from './icons/CogIcon.vue';
 import { PROGRESS_BAR } from '../constants/progressTypes';
-import * as DOMPurify from 'dompurify';
+import DOMPurify from 'dompurify';
 import { marked } from 'marked';
 import { useRoute } from 'vue-router'
 
