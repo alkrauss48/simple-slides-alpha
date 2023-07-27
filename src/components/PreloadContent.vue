@@ -1,7 +1,7 @@
 <script setup lang="ts">
 
 defineProps<{
-  data: Array,
+  data: string[],
 }>();
 </script>
 

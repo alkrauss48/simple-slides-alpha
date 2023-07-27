@@ -3,40 +3,46 @@ import { ref, onMounted } from 'vue'
 import PreloadContent from './PreloadContent.vue';
 import SlideView from './SlideView.vue';
 import CogIcon from './icons/CogIcon.vue';
-import { PROGRESS_BAR } from '../constants/progressTypes';
+import ProgressType from '../enums/progressType.ts';
+import QueryParams from '../interfaces/queryParams.ts';
 import DOMPurify from 'dompurify';
 import { marked } from 'marked';
 import { useRoute } from 'vue-router'
 
-const data = ref([]);
-const params = ref({});
+const data = ref<string[]>([]);
+
 const route = useRoute();
 
-const getQueryParams = () => {
+const getQueryParams = (): QueryParams =>  {
   const indexParam = route.query.index;
-  const index = indexParam ? parseInt(indexParam) : 0
+  const index = indexParam ? parseInt(indexParam as string) : 0
 
-  const progress = route.query.progress ?? PROGRESS_BAR;
+  const progress = (route.query.progress as ProgressType) ?? ProgressType.Bar;
 
-  return {
-    progress,
+  const queryParams: QueryParams = {
     index,
+    progress,
   };
+
+  return queryParams;
 };
+
+const params = ref<QueryParams>(getQueryParams());
 
 const getSlidesUrl = () : string => {
   if (route.name == 'home') {
     localStorage.setItem('slidesUrl', '');
+
     return 'instructions.md';
   }
-  const url = atob(route.params.slides);
+
+  const url = atob(route.params.slides as string);
 
   localStorage.setItem('slidesUrl', url);
   return url;
 };
 
 onMounted(async () => {
-  params.value = getQueryParams();
   const slidesUrl = getSlidesUrl();
 
   const response = await fetch(slidesUrl);

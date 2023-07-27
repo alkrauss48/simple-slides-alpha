@@ -1,8 +1,8 @@
 <script setup lang="ts">
 
 const emit = defineEmits<{
-  next: null,
-  previous: null,
+  (e: 'next'): void
+  (e: 'previous'): void
 }>();
 
 </script>
