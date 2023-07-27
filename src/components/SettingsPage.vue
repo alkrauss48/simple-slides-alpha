@@ -4,7 +4,7 @@ import { useRouter } from 'vue-router'
 
 const router = useRouter();
 
-const slidesUrl = ref(localStorage.getItem('slidesUrl'));
+const slidesUrl = ref<string>(localStorage.getItem('slidesUrl') ?? '');
 
 const back = () => {
   router.back();

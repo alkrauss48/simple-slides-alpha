@@ -8,4 +8,4 @@ services:
       context: .
       dockerfile: docker/frontend/Dockerfile
     ports:
-      - "8080:80"
+      - "5173:80"

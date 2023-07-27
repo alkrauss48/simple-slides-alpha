@@ -4,28 +4,29 @@ import ProgressBar from './ProgressBar.vue';
 import ProgressLabel from './ProgressLabel.vue';
 import SlideArrows from './SlideArrows.vue';
 import SlideContent from './SlideContent.vue';
-import { PROGRESS_BAR, PROGRESS_LABEL } from '../constants/progressTypes';
+import ProgressType from '../enums/progressType.ts';
 import { useRouter } from 'vue-router'
+import QueryParams from '../interfaces/queryParams.ts';
 
 const router = useRouter();
 
 const props = defineProps<{
-  data: Array,
-  params: object,
+  data: string[],
+  params: QueryParams,
 }>();
 
-const index = ref<number>(props.params.index);
+const index = ref(props.params.index);
 
-const content = computed<string>(() => {
+const content = computed(() => {
   return props.data[index.value];
 });
 
-const showProgressBar = computed<boolean>(() => {
-  return props.params.progress === PROGRESS_BAR;
+const showProgressBar = computed(() => {
+  return props.params.progress === ProgressType.Bar;
 });
 
 const showProgressLabel = computed<boolean>(() => {
-  return props.params.progress === PROGRESS_LABEL;
+  return props.params.progress === ProgressType.Label;
 });
 
 const getNewIndex = (count: number) : number => {
@@ -49,12 +50,12 @@ const incrementContent = (count: number) : void => {
 
   index.value = newIndex;
 
-  const query = {
+  const query: QueryParams = {
     index: newIndex,
   };
 
   if (showProgressLabel.value) {
-    query.progress = PROGRESS_LABEL;
+    query.progress = ProgressType.Label;
   }
 
   router.replace({ query });
