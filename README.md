@@ -12,19 +12,26 @@ focuses on:
 * Many slides, and changing through slides quickly
 
 ## To Install
-```
+```sh
 npm install
 ```
 
 ## To Run
-```
+```sh
 npm run dev # Navigate to http://localhost:5173
 
-# Alternatively, you can run with Docker,
-# but that will generate a release build,
-# which is not ideal for developing
+# Alternatively, you can run with Docker, but that will generate
+# a release build without hot reloading or volume binding,
+# which is not ideal for developing.
 
 docker compose up
+```
+
+## To Compile with Typescript
+```sh
+# I mostly use this for linting
+
+npx vue-tsc
 ```
 
 ## Recommended IDE Setup
