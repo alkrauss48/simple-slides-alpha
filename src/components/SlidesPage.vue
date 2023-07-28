@@ -51,6 +51,9 @@ onMounted(async () => {
 
   const parsedBody = body
     .split("\n\n")
+    .map((content) => content.split("\r\n"))
+    .flat()
+    .filter((content) => content.trim().length > 0)
     .map((content) => {
       const parsed = marked.parse(content, {
         headerIds: false,
