@@ -48,14 +48,18 @@
 }
 
 .typography code {
-  background-color: #e2e2e2;
+  background-color: rgba(226, 226, 226, .4);
   padding: .25rem;
 }
 
 .typography pre {
-  background-color: #e2e2e2;
+  background-color: rgba(226, 226, 226, .4);
   padding: .5rem 1rem;
   text-align: left;
+}
+
+.typography pre code {
+  background-color: transparent;
 }
 
 .typography a {
@@ -79,7 +83,7 @@
 }
 
 .typography h4 {
-  font-size: 1;
+  font-size: 1em;
 }
 
 .typography h5 {
