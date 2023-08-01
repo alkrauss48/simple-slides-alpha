@@ -82,16 +82,16 @@ window.addEventListener('keydown', (event) : void => {
     " ",
     "ArrowDown",
     "ArrowRight",
-    "j",
-    "l",
+    "j", 'J',
+    "l", 'L',
   ];
 
   const decrementors = [
     "Backspace",
     "ArrowUp",
     "ArrowLeft",
-    "k",
-    "h",
+    "k", 'K',
+    "h", 'H',
   ];
 
   if (incrementors.includes(key)) {
