@@ -73,8 +73,8 @@ onMounted(async () => {
       to="/settings"
       class="
         fixed top-6 right-8
-        text-5xl text-gray-300
-        hover:text-gray-500 focus:text-gray-500
+        text-5xl text-gray-300/50
+        hover:text-gray-300 focus:text-gray-300
       "
       ><CogIcon /></router-link>
     <div v-if="data.length > 0">
