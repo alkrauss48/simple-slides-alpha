@@ -1,9 +1,14 @@
 <script setup lang="ts">
+import { computed } from 'vue'
 
-defineProps<{
+const props = defineProps<{
   current: number,
   total: number,
 }>();
+
+const label = computed<string>(() => {
+  return `${props.current} / ${props.total}`;
+});
 </script>
 
 <template>
@@ -13,6 +18,6 @@ defineProps<{
     [ h-8 w-24 ]
     [ flex justify-center items-center ]
   ">
-    <p>{{ current }} / {{ total }}</p>
+    <p>{{ label }}</p>
   </aside>
 </template>
