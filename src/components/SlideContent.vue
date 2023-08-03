@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ref, onMounted } from 'vue'
 // @ts-ignore
-import textfit from '../utils/textFit.js';
+import textfit from '../lib/textFit.js';
 
 defineProps<{
   content: string,
