@@ -7,6 +7,10 @@ const props = defineProps<{
 }>();
 
 const percentage = computed<number>(() => {
+  if (props.total === 0) {
+    return 0;
+  }
+
   return props.current / props.total * 100;
 });
 
