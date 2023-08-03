@@ -10,6 +10,7 @@ const emit = defineEmits<{
 <template>
   <section>
     <button
+      id="previous"
       type="button"
       @click="emit('previous')"
       title="Go back 1 slide"
@@ -18,6 +19,7 @@ const emit = defineEmits<{
         border-r-[30px] border-r-gray-300/50 hover:border-r-gray-300"
     ></button>
     <button
+      id="next"
       type="button"
       @click="emit('next')"
       title="Go forward 1 slide"
