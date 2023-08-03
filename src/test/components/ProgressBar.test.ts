@@ -1,6 +1,6 @@
 import { shallowMount, VueWrapper } from '@vue/test-utils'
 
-import ProgressBar from '../components/ProgressBar.vue'
+import ProgressBar from '../../components/ProgressBar.vue'
 
 const mountWrapper = () : VueWrapper<any> => {
   return shallowMount(ProgressBar, {

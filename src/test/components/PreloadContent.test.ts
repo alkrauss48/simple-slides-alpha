@@ -1,7 +1,7 @@
 import { beforeEach } from 'vitest'
 import { shallowMount, VueWrapper } from '@vue/test-utils'
 
-import PreloadContent from '../components/PreloadContent.vue'
+import PreloadContent from '../../components/PreloadContent.vue'
 
 const mountWrapper = () : VueWrapper<any> => {
   return shallowMount(PreloadContent, {

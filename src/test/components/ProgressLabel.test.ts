@@ -1,7 +1,7 @@
 import { beforeEach } from 'vitest'
 import { shallowMount, VueWrapper } from '@vue/test-utils'
 
-import ProgressLabel from '../components/ProgressLabel.vue'
+import ProgressLabel from '../../components/ProgressLabel.vue'
 
 const mountWrapper = () : VueWrapper<any> => {
   return shallowMount(ProgressLabel, {
