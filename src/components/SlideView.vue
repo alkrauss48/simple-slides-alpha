@@ -7,6 +7,8 @@ import SlideContent from './SlideContent.vue';
 import ProgressType from '../enums/progressType.ts';
 import { useRouter } from 'vue-router'
 import QueryParams from '../interfaces/queryParams.ts';
+import { RouteNames } from '../router/routes.ts';
+import Keys from '../constants/keys.ts';
 
 const router = useRouter();
 
@@ -64,11 +66,11 @@ const incrementContent = (count: number) : void => {
 window.addEventListener('keydown', (event) : void => {
   const { key } = event;
 
-  if (router.currentRoute.value.name == 'settings') {
+  if (router.currentRoute.value.name == RouteNames.Settings) {
     return;
   }
 
-  if (key == "Enter" || key == " ") {
+  if (key == Keys.ENTER || key == Keys.SPACE) {
     var next = document.getElementById('next');
     var previous = document.getElementById('previous');
 
@@ -77,34 +79,17 @@ window.addEventListener('keydown', (event) : void => {
     }
   }
 
-  const incrementors = [
-    "Enter",
-    " ",
-    "ArrowDown",
-    "ArrowRight",
-    "j", 'J',
-    "l", 'L',
-  ];
-
-  const decrementors = [
-    "Backspace",
-    "ArrowUp",
-    "ArrowLeft",
-    "k", 'K',
-    "h", 'H',
-  ];
-
-  if (incrementors.includes(key)) {
+  if (Keys.INCREMENTORS.includes(key)) {
     incrementContent(1);
-  } else if (decrementors.includes(key)) {
+  } else if (Keys.DECREMENTORS.includes(key)) {
     incrementContent(-1);
-  } else if (key === 'f') {
+  } else if (Keys.LARGE_INCREMENTORS.includes(key)) {
     incrementContent(5);
-  } else if (key === 'b') {
+  } else if (Keys.LARGE_DECREMENTORS.includes(key)) {
     incrementContent(-5);
-  } else if (key === '$') {
+  } else if (key === Keys.DOLLAR_SIGN) {
     incrementContent(props.data.length);
-  } else if (key === '0') {
+  } else if (key === Keys.ZERO) {
     incrementContent(-1 * props.data.length);
   }
 });
