@@ -1,22 +1,5 @@
-import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router'
-import SlidesPage from '../components/SlidesPage.vue'
-import SettingsPage from '../components/SettingsPage.vue'
-
-const routes: Array<RouteRecordRaw> = [
-  {
-    path: '/',
-    name: 'home',
-    component: SlidesPage,
-  }, {
-    path: '/settings',
-    name: 'settings',
-    component: SettingsPage,
-  }, {
-    path: '/:slides',
-    name: 'slides',
-    component: SlidesPage,
-  },
-];
+import { createRouter, createWebHistory } from 'vue-router'
+import routes from './routes.ts';
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
