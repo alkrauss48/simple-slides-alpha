@@ -1,13 +1,11 @@
 <script setup lang="ts">
 import { computed } from 'vue'
-import dataStore from '../store/dataStore.ts'
 
-const props = defineProps<{
-  current: number,
-}>();
+import dataStore from '../store/dataStore.ts'
+import slideStore from '../store/slideStore.ts'
 
 const label = computed<string>(() => {
-  return `${props.current} / ${dataStore.data.length}`;
+  return `${slideStore.index + 1} / ${dataStore.data.length}`;
 });
 </script>
 

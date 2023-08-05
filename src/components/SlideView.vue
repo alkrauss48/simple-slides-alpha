@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, computed } from 'vue'
+import { computed } from 'vue'
 import ProgressBar from './ProgressBar.vue';
 import ProgressLabel from './ProgressLabel.vue';
 import SlideArrows from './SlideArrows.vue';
@@ -10,50 +10,23 @@ import QueryParams from '../interfaces/queryParams.ts';
 import { RouteNames } from '../router/routes.ts';
 import Keys from '../constants/keys.ts';
 import dataStore from '../store/dataStore.ts'
+import slideStore from '../store/slideStore.ts'
 
 const router = useRouter();
 
-const props = defineProps<{
-  params: QueryParams,
-}>();
-
-const index = ref(props.params.index);
-
 const content = computed(() => {
-  return dataStore.data[index.value];
-});
-
-const showProgressBar = computed(() => {
-  return props.params.progress === ProgressType.Bar;
+  return dataStore.data[slideStore.index];
 });
 
 const showProgressLabel = computed<boolean>(() => {
-  return props.params.progress === ProgressType.Label;
+  return slideStore.progress === ProgressType.Label;
 });
 
-const getNewIndex = (count: number) : number => {
-  if (index.value + count < 0) {
-    return 0;
-  }
-
-  if (index.value + count >= dataStore.data.length) {
-    return dataStore.data.length - 1;
-  }
-
-  return index.value + count;
-};
-
 const incrementContent = (count: number) : void => {
-  const newIndex = getNewIndex(count);
-
-  if (index.value === newIndex) {
-    return;
-  }
-
-  index.value = newIndex;
+  slideStore.increment(count);
 
   const query: QueryParams = {
-    index: newIndex,
+    index: slideStore.index,
   };
 
   if (showProgressLabel.value) {
@@ -97,18 +70,12 @@ window.addEventListener('keydown', (event) : void => {
 
 <template>
   <div class="w-full h-[100dvh] flex justify-center items-center">
-    <SlideContent :key="content" :content="content" />
+    <SlideContent :key="slideStore.index" :content="content" />
     <SlideArrows
       @next="incrementContent(1)"
       @previous="incrementContent(-1)"
     />
-    <ProgressLabel
-      v-if="showProgressLabel"
-      :current="index + 1"
-    />
-    <ProgressBar
-      v-if="showProgressBar"
-      :current="index + 1"
-    />
+    <ProgressLabel v-if="showProgressLabel" />
+    <ProgressBar v-else />
   </div>
 </template>

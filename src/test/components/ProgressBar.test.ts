@@ -1,23 +1,15 @@
 import { shallowMount, VueWrapper } from '@vue/test-utils'
 
-import dataStore from '../../store/dataStore.ts'
 import ProgressBar from '../../components/ProgressBar.vue'
+import dataStore from '../../store/dataStore.ts'
+import slideStore from '../../store/slideStore.ts'
 
 const mountWrapper = () : VueWrapper<any> => {
-  dataStore.data = Array(16).fill('');
+  dataStore.data = Array(17).fill('');
+  slideStore.index = 4;
 
-  return shallowMount(ProgressBar, {
-    props: {
-      current: 4,
-    }
-  });
+  return shallowMount(ProgressBar);
 };
-
-test('sets props', () => {
-  const wrapper = mountWrapper();
-
-  expect(wrapper.props().current).toBe(4);
-});
 
 test('gets percentage', () => {
   const wrapper = mountWrapper();
@@ -25,16 +17,31 @@ test('gets percentage', () => {
   expect(wrapper.vm.percentage).toBe(25);
 });
 
-test('gets percentage for 0 total', () => {
+test('gets 0 percentage for 0 total', () => {
   dataStore.data = [];
+  slideStore.index = 0;
 
-  const wrapper: VueWrapper<any> = shallowMount(ProgressBar, {
-    props: {
-      current: 0,
-    }
-  });
+  const wrapper: VueWrapper<any> = shallowMount(ProgressBar);
 
   expect(wrapper.vm.percentage).toBe(0);
+});
+
+test('gets 0 percentage for 1 total on last slide', () => {
+  dataStore.data = [''];
+  slideStore.index = 0;
+
+  const wrapper: VueWrapper<any> = shallowMount(ProgressBar);
+
+  expect(wrapper.vm.percentage).toBe(0);
+});
+
+test('gets 100 percentage for 2 total on last slide', () => {
+  dataStore.data = ['', ''];
+  slideStore.index = 1;
+
+  const wrapper: VueWrapper<any> = shallowMount(ProgressBar);
+
+  expect(wrapper.vm.percentage).toBe(100);
 });
 
 test('gets percentage label', () => {

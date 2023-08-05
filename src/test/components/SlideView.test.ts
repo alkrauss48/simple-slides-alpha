@@ -1,11 +1,11 @@
 import { shallowMount, VueWrapper } from '@vue/test-utils'
 import { useRouter } from 'vue-router'
 
-import ProgressType from '../../enums/progressType.ts'
-import QueryParams from '../../interfaces/queryParams.ts'
 import SlideView from '../../components/SlideView.vue'
+import ProgressType from '../../enums/progressType.ts'
 import router from '../../router/index.ts'
 import dataStore from '../../store/dataStore.ts'
+import slideStore from '../../store/slideStore.ts'
 
 vi.mock('vue-router');
 
@@ -20,23 +20,11 @@ beforeEach(() => {
 
 const mountWrapper = () : VueWrapper<any> => {
   dataStore.data = ['foo', 'bar', 'baz'];
+  slideStore.index = 1;
+  slideStore.progress = ProgressType.Bar;
 
-  return shallowMount(SlideView, {
-    props: {
-      params: <QueryParams>{
-        index: 1,
-        progress: ProgressType.Bar,
-      },
-    }
-  });
+  return shallowMount(SlideView);
 };
-
-test('sets props', () => {
-  const wrapper = mountWrapper();
-
-  expect(wrapper.props().params.index).toBe(1);
-  expect(wrapper.props().params.progress).toBe(ProgressType.Bar);
-});
 
 test('gets content', () => {
   const wrapper = mountWrapper();
@@ -44,24 +32,10 @@ test('gets content', () => {
   expect(wrapper.vm.content).toBe('bar');
 });
 
-test('returns showProgressBar as true', () => {
-  const wrapper = mountWrapper();
-
-  expect(wrapper.vm.showProgressBar).toBeTruthy();
-});
-
-test('returns showProgressBar as false', () => {
-  const wrapper = mountWrapper();
-
-  wrapper.vm.props.params.progress = ProgressType.Label;
-
-  expect(wrapper.vm.showProgressBar).toBeFalsy();
-});
-
 test('returns showProgressLabel as true', () => {
   const wrapper = mountWrapper();
 
-  wrapper.vm.props.params.progress = ProgressType.Label;
+  slideStore.progress = ProgressType.Label;
 
   expect(wrapper.vm.showProgressLabel).toBeTruthy();
 });
@@ -76,7 +50,7 @@ test('incrementCount increments index and calls router replace', () => {
   const wrapper = mountWrapper();
   wrapper.vm.incrementContent(1);
 
-  expect(wrapper.vm.index).toBe(2);
+  expect(slideStore.index).toBe(2);
   expect(useRouter().replace).toHaveBeenCalled();
 });
 
@@ -84,7 +58,7 @@ test('incrementCount increments index only to max, and calls router replace', ()
   const wrapper = mountWrapper();
   wrapper.vm.incrementContent(5);
 
-  expect(wrapper.vm.index).toBe(2);
+  expect(slideStore.index).toBe(2);
   expect(useRouter().replace).toHaveBeenCalled();
 });
 
@@ -92,7 +66,7 @@ test('incrementCount decrements index and calls router replace', () => {
   const wrapper = mountWrapper();
   wrapper.vm.incrementContent(-1);
 
-  expect(wrapper.vm.index).toBe(0);
+  expect(slideStore.index).toBe(0);
   expect(useRouter().replace).toHaveBeenCalled();
 });
 
@@ -100,7 +74,7 @@ test('incrementCount decrements index only to min, and calls router replace', ()
   const wrapper = mountWrapper();
   wrapper.vm.incrementContent(-5);
 
-  expect(wrapper.vm.index).toBe(0);
+  expect(slideStore.index).toBe(0);
   expect(useRouter().replace).toHaveBeenCalled();
 });
 

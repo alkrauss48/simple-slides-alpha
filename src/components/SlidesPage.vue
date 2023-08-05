@@ -1,30 +1,24 @@
 <script setup lang="ts">
-import { ref, onMounted } from 'vue'
+import { onMounted } from 'vue'
 import PreloadContent from './PreloadContent.vue';
 import SlideView from './SlideView.vue';
 import CogIcon from './icons/CogIcon.vue';
 import ProgressType from '../enums/progressType.ts';
-import QueryParams from '../interfaces/queryParams.ts';
 import { useRoute } from 'vue-router'
 import dataStore from '../store/dataStore.ts'
+import slideStore from '../store/slideStore.ts'
 
 const route = useRoute();
 
-const getQueryParams = (): QueryParams =>  {
+const processQueryParams = (): void =>  {
   const indexParam = route.query.index;
   const index = indexParam ? parseInt(indexParam as string) : 0
 
   const progress = (route.query.progress as ProgressType) ?? ProgressType.Bar;
 
-  const queryParams: QueryParams = {
-    index,
-    progress,
-  };
-
-  return queryParams;
+  slideStore.index = index;
+  slideStore.progress = progress;
 };
-
-const params = ref<QueryParams>(getQueryParams());
 
 const getSlidesUrl = (): string => {
   if (route.name == 'home') {
@@ -40,6 +34,7 @@ const getSlidesUrl = (): string => {
 };
 
 onMounted(async () => {
+  processQueryParams();
   dataStore.fetchAndProcessData(getSlidesUrl());
 });
 </script>
@@ -56,9 +51,7 @@ onMounted(async () => {
       ><CogIcon /></router-link>
     <div v-if="dataStore.data.length > 0">
       <PreloadContent />
-      <SlideView
-        :params="params"
-      />
+      <SlideView />
     </div>
   </main>
 </template>
