@@ -5,7 +5,7 @@ import ProgressType from '../../enums/progressType.ts'
 import QueryParams from '../../interfaces/queryParams.ts'
 import SlideView from '../../components/SlideView.vue'
 import router from '../../router/index.ts'
-
+import dataStore from '../../store/dataStore.ts'
 
 vi.mock('vue-router');
 
@@ -19,9 +19,10 @@ beforeEach(() => {
 })
 
 const mountWrapper = () : VueWrapper<any> => {
+  dataStore.data = ['foo', 'bar', 'baz'];
+
   return shallowMount(SlideView, {
     props: {
-      data: ['foo', 'bar', 'baz'],
       params: <QueryParams>{
         index: 1,
         progress: ProgressType.Bar,
@@ -33,7 +34,6 @@ const mountWrapper = () : VueWrapper<any> => {
 test('sets props', () => {
   const wrapper = mountWrapper();
 
-  expect(wrapper.props().data).toStrictEqual(['foo', 'bar', 'baz']);
   expect(wrapper.props().params.index).toBe(1);
   expect(wrapper.props().params.progress).toBe(ProgressType.Bar);
 });

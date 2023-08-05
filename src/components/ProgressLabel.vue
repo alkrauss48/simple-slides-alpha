@@ -1,13 +1,13 @@
 <script setup lang="ts">
 import { computed } from 'vue'
+import dataStore from '../store/dataStore.ts'
 
 const props = defineProps<{
   current: number,
-  total: number,
 }>();
 
 const label = computed<string>(() => {
-  return `${props.current} / ${props.total}`;
+  return `${props.current} / ${dataStore.data.length}`;
 });
 </script>
 

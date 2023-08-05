@@ -1,12 +1,14 @@
 import { shallowMount, VueWrapper } from '@vue/test-utils'
 
+import dataStore from '../../store/dataStore.ts'
 import ProgressBar from '../../components/ProgressBar.vue'
 
 const mountWrapper = () : VueWrapper<any> => {
+  dataStore.data = Array(16).fill('');
+
   return shallowMount(ProgressBar, {
     props: {
       current: 4,
-      total: 16,
     }
   });
 };
@@ -15,7 +17,6 @@ test('sets props', () => {
   const wrapper = mountWrapper();
 
   expect(wrapper.props().current).toBe(4);
-  expect(wrapper.props().total).toBe(16);
 });
 
 test('gets percentage', () => {
@@ -25,10 +26,11 @@ test('gets percentage', () => {
 });
 
 test('gets percentage for 0 total', () => {
+  dataStore.data = [];
+
   const wrapper: VueWrapper<any> = shallowMount(ProgressBar, {
     props: {
       current: 0,
-      total: 0,
     }
   });
 

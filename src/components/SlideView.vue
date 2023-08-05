@@ -9,18 +9,18 @@ import { useRouter } from 'vue-router'
 import QueryParams from '../interfaces/queryParams.ts';
 import { RouteNames } from '../router/routes.ts';
 import Keys from '../constants/keys.ts';
+import dataStore from '../store/dataStore.ts'
 
 const router = useRouter();
 
 const props = defineProps<{
-  data: string[],
   params: QueryParams,
 }>();
 
 const index = ref(props.params.index);
 
 const content = computed(() => {
-  return props.data[index.value];
+  return dataStore.data[index.value];
 });
 
 const showProgressBar = computed(() => {
@@ -36,8 +36,8 @@ const getNewIndex = (count: number) : number => {
     return 0;
   }
 
-  if (index.value + count >= props.data.length) {
-    return props.data.length - 1;
+  if (index.value + count >= dataStore.data.length) {
+    return dataStore.data.length - 1;
   }
 
   return index.value + count;
@@ -88,9 +88,9 @@ window.addEventListener('keydown', (event) : void => {
   } else if (Keys.LARGE_DECREMENTORS.includes(key)) {
     incrementContent(-5);
   } else if (key === Keys.DOLLAR_SIGN) {
-    incrementContent(props.data.length);
+    incrementContent(dataStore.data.length);
   } else if (key === Keys.ZERO) {
-    incrementContent(-1 * props.data.length);
+    incrementContent(-1 * dataStore.data.length);
   }
 });
 </script>
@@ -105,12 +105,10 @@ window.addEventListener('keydown', (event) : void => {
     <ProgressLabel
       v-if="showProgressLabel"
       :current="index + 1"
-      :total="data.length"
     />
     <ProgressBar
       v-if="showProgressBar"
       :current="index + 1"
-      :total="data.length"
     />
   </div>
 </template>

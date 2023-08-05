@@ -1,17 +1,17 @@
 <script setup lang="ts">
 import { computed, CSSProperties } from 'vue'
+import dataStore from '../store/dataStore.ts'
 
 const props = defineProps<{
   current: number,
-  total: number,
 }>();
 
 const percentage = computed<number>(() => {
-  if (props.total === 0) {
+  if (dataStore.data.length === 0) {
     return 0;
   }
 
-  return props.current / props.total * 100;
+  return props.current / dataStore.data.length * 100;
 });
 
 const percentageLabel = computed<string>(() => {

@@ -1,13 +1,15 @@
 import { beforeEach } from 'vitest'
 import { shallowMount, VueWrapper } from '@vue/test-utils'
 
+import dataStore from '../../store/dataStore.ts'
 import ProgressLabel from '../../components/ProgressLabel.vue'
 
 const mountWrapper = () : VueWrapper<any> => {
+  dataStore.data = Array(16).fill('');
+
   return shallowMount(ProgressLabel, {
     props: {
       current: 4,
-      total: 16,
     }
   });
 };
@@ -20,7 +22,6 @@ beforeEach(async () => {
 
 test('sets props', () => {
   expect(wrapper.props().current).toBe(4);
-  expect(wrapper.props().total).toBe(16);
 });
 
 test('gets label', () => {
