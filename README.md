@@ -27,6 +27,14 @@ npm run dev # Navigate to http://localhost:5173
 docker compose up
 ```
 
+## To Run the Tests
+```sh
+npm test
+
+# Alternatively, for test coverage, run:
+npm run test-coverage
+```
+
 ## To Compile with Typescript
 ```sh
 # I mostly use this for linting
