@@ -7,7 +7,8 @@
     "dev": "vite",
     "build": "vue-tsc && vite build",
     "preview": "vite preview",
-    "test": "vitest --dom"
+    "test": "vitest --dom",
+    "test-coverage": "vitest --dom --coverage"
   },
   "dependencies": {
     "dompurify": "^3.0.5",
@@ -19,6 +20,7 @@
     "@types/dompurify": "^3.0.2",
     "@types/marked": "^5.0.1",
     "@vitejs/plugin-vue": "^4.2.3",
+    "@vitest/coverage-v8": "^0.34.1",
     "@vue/test-utils": "^2.4.1",
     "autoprefixer": "^10.4.14",
     "happy-dom": "^10.5.2",
