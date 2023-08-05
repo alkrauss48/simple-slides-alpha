@@ -24,9 +24,30 @@ jobs:
         run: npm ci --prefer-offline
       - name: Run Typescript lint
         run: node_modules/.bin/vue-tsc
+  test:
+    name: Test
+    runs-on: ubuntu-latest
+    steps:
+      - name: Install Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ env.node_version }}
+      - name: Checkout code
+        uses: actions/checkout@v3
+      - name: Cache frontend dependencies
+        uses: actions/cache@v3
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
+      - name: Install npm dependencies
+        run: npm ci --prefer-offline
+      - name: Run Typescript lint
+        run: node_modules/.bin/vitest --run
   build:
     name: Build
-    needs: ['lint']
+    needs: ['lint', 'test']
     runs-on: ubuntu-latest
     steps:
       -

@@ -1,8 +1,5 @@
 <script setup lang="ts">
-
-defineProps<{
-  data: string[],
-}>();
+import dataStore from '../store/dataStore.ts'
 </script>
 
 <template>
@@ -12,7 +9,7 @@ defineProps<{
     inert
   >
     <div
-      v-for="(slide, index) in data"
+      v-for="(slide, index) in dataStore.data"
       :key="index"
       class="absolute top-0 left-0"
       v-html="slide"

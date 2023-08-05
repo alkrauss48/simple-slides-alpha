@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import { ref, onMounted } from 'vue'
-// @ts-ignore
-import textfit from '../utils/textFit.js';
+import { runTextFit, openAllLinksInNewTab } from '../utils/handleContent.ts';
 
 defineProps<{
   content: string,
@@ -9,27 +8,21 @@ defineProps<{
 
 const slideContent = ref<HTMLDivElement>();
 
-const runTextFit = () : void => {
-  textfit(slideContent.value, {
-    maxFontSize: 500,
-  });
-};
+const sizeContent = () : void => {
+  if (!slideContent.value) {
+    return;
+  }
 
-const openAllLinksInNewTab = () : void => {
-    document
-      .querySelectorAll(".slide-content a")
-      .forEach((element) => {
-        element.setAttribute("target", "_blank");
-      });
+  runTextFit(slideContent.value);
 };
-
-window.addEventListener('resize', () : void => {
-  runTextFit();
-});
 
 onMounted(() : void => {
-  runTextFit();
+  sizeContent();
   openAllLinksInNewTab();
+
+  window.addEventListener('resize', () : void => {
+    sizeContent();
+  });
 });
 </script>
 

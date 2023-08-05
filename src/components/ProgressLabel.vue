@@ -1,9 +1,12 @@
 <script setup lang="ts">
+import { computed } from 'vue'
 
-defineProps<{
-  current: number,
-  total: number,
-}>();
+import dataStore from '../store/dataStore.ts'
+import slideStore from '../store/slideStore.ts'
+
+const label = computed<string>(() => {
+  return `${slideStore.index + 1} / ${dataStore.data.length}`;
+});
 </script>
 
 <template>
@@ -13,6 +16,6 @@ defineProps<{
     [ h-8 w-24 ]
     [ flex justify-center items-center ]
   ">
-    <p>{{ current }} / {{ total }}</p>
+    <p>{{ label }}</p>
   </aside>
 </template>
