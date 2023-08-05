@@ -28,6 +28,11 @@ const slideStore = reactive({
 
     slideStore.index = newIndex;
   },
+
+  reset() {
+    this.index = 0;
+    this.progress = ProgressType.Bar;
+  },
 });
 
 export default slideStore;

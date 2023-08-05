@@ -26,6 +26,10 @@ const dataStore = reactive({
 
     this.data = parsedBody;
   },
+
+  reset() {
+    this.data = [];
+  },
 });
 
 export default dataStore;
