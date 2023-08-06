@@ -77,19 +77,3 @@ test('incrementCount decrements index only to min, and calls router replace', ()
   expect(slideStore.index).toBe(0);
   expect(useRouter().replace).toHaveBeenCalled();
 });
-
-// NOTE: keydown events aren't being triggered via the following:
-//
-// test('pressing the right key increments the slide', async () => {
-//   const wrapper = mountWrapper();
-//   await wrapper.trigger('keydown', { key: 'right' });
-//
-//   expect(wrapper.vm.index).toBe(2);
-// });
-//
-// test('pressing the left key decrements the slide', async () => {
-//   const wrapper = mountWrapper();
-//   await wrapper.trigger('keydown', { key: 'left' });
-//
-//   expect(wrapper.vm.index).toBe(0);
-// });
