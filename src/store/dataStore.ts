@@ -22,7 +22,7 @@ const dataStore = reactive({
         });
 
         return DOMPurify.sanitize(parsed);
-      });
+      }).map((content) => content.replace(/\n$/, ''));
 
     this.data = parsedBody;
   },

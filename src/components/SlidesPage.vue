@@ -24,7 +24,7 @@ const getSlidesUrl = (): string => {
   if (route.name == 'home') {
     localStorage.setItem('slidesUrl', '');
 
-    return 'instructions.md';
+    return '/instructions.md';
   }
 
   const url = atob(route.params.slides as string);

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed } from 'vue'
+import { computed, onMounted, onUnmounted } from 'vue'
 import ProgressBar from './ProgressBar.vue';
 import ProgressLabel from './ProgressLabel.vue';
 import SlideArrows from './SlideArrows.vue';
@@ -36,7 +36,7 @@ const incrementContent = (count: number) : void => {
   router.replace({ query });
 };
 
-window.addEventListener('keydown', (event) : void => {
+const bindKeyDown = (event: KeyboardEvent): void => {
   const { key } = event;
 
   if (router.currentRoute.value.name == RouteNames.Settings) {
@@ -65,7 +65,10 @@ window.addEventListener('keydown', (event) : void => {
   } else if (key === Keys.ZERO) {
     incrementContent(-1 * dataStore.data.length);
   }
-});
+};
+
+onMounted(() => window.addEventListener('keydown',  bindKeyDown));
+onUnmounted(() => window.removeEventListener('keydown',  bindKeyDown));
 </script>
 
 <template>

@@ -18,6 +18,8 @@
  */
 /*global define:true, document:true, window:true, HTMLElement:true*/
 
+/* c8 ignore next 300 */
+
 "use strict";
 
 var defaultSettings = {
