@@ -22,3 +22,11 @@ test('can reset to initial values', async () => {
   expect(slideStore.index).toBe(0);
   expect(slideStore.progress).toBe(ProgressType.Bar);
 });
+
+test('will not change slide store if no new index', async () => {
+  slideStore.index = 0;
+
+  slideStore.increment(-1);
+
+  expect(slideStore.index).toBe(0);
+});

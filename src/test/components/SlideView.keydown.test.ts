@@ -142,6 +142,68 @@ test('pressing ArrowLeft increments the slide', async () => {
   expect(slideStore.index).toBe(0);
 });
 
+// Focus
+
+test('pressing enter while focused on next does not increment the slide', async () => {
+  const wrapper = mountWrapper();
+
+  document.getElementById('next')?.remove();
+
+  const next = document.createElement("button");
+  next.id = 'next';
+  document.body.appendChild(next);
+  next.focus();
+
+  wrapper.vm.bindKeyDown({ key: 'Enter' });
+
+  expect(slideStore.index).toBe(1);
+});
+
+test('pressing enter while focused on previous does not increment the slide', async () => {
+  const wrapper = mountWrapper();
+
+  document.getElementById('previous')?.remove();
+
+  const previous = document.createElement("button");
+  previous.id = 'previous';
+  document.body.appendChild(previous);
+  previous.focus();
+
+  wrapper.vm.bindKeyDown({ key: 'Enter' });
+
+  expect(slideStore.index).toBe(1);
+});
+
+test('pressing space while focused on next does not increment the slide', async () => {
+  const wrapper = mountWrapper();
+
+  document.getElementById('next')?.remove();
+
+  const next = document.createElement("button");
+  next.id = 'next';
+  document.body.appendChild(next);
+  next.focus();
+
+  wrapper.vm.bindKeyDown({ key: ' ' });
+
+  expect(slideStore.index).toBe(1);
+});
+
+test('pressing space while focused on previous does not increment the slide', async () => {
+  const wrapper = mountWrapper();
+
+  document.getElementById('previous')?.remove();
+
+  const previous = document.createElement("button");
+  previous.id = 'previous';
+  document.body.appendChild(previous);
+  previous.focus();
+
+  wrapper.vm.bindKeyDown({ key: ' ' });
+
+  expect(slideStore.index).toBe(1);
+});
+
 // Large Incrementors
 
 test('pressing f large increments the slide', async () => {
