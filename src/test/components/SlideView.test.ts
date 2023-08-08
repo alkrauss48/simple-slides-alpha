@@ -77,3 +77,21 @@ test('incrementCount decrements index only to min, and calls router replace', ()
   expect(slideStore.index).toBe(0);
   expect(useRouter().replace).toHaveBeenCalled();
 });
+
+test('buildQueryParams includes index', () => {
+  const wrapper = mountWrapper();
+  const query = wrapper.vm.buildQueryParams();
+
+  expect(query.index).toBe(1);
+  expect(query.progress).toBeFalsy();
+});
+
+test('buildQueryParams includes progress', () => {
+  const wrapper = mountWrapper();
+
+  slideStore.progress = ProgressType.Label;
+
+  const query = wrapper.vm.buildQueryParams();
+
+  expect(query.progress).toBe(ProgressType.Label);
+});

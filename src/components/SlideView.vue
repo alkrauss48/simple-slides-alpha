@@ -22,9 +22,7 @@ const showProgressLabel = computed<boolean>(() => {
   return slideStore.progress === ProgressType.Label;
 });
 
-const incrementContent = (count: number) : void => {
-  slideStore.increment(count);
-
+const buildQueryParams = () : QueryParams => {
   const query: QueryParams = {
     index: slideStore.index,
   };
@@ -32,6 +30,14 @@ const incrementContent = (count: number) : void => {
   if (showProgressLabel.value) {
     query.progress = ProgressType.Label;
   }
+
+  return query;
+};
+
+const incrementContent = (count: number) : void => {
+  slideStore.increment(count);
+
+  const query = buildQueryParams();
 
   router.replace({ query });
 };
