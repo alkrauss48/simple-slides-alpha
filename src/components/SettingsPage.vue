@@ -16,6 +16,10 @@ const back = () => {
 };
 
 const go = () => {
+  if (!slidesUrl.value) {
+    return;
+  }
+
   router.push(`/${btoa(slidesUrl.value)}`);
 };
 
@@ -33,6 +37,7 @@ watch(darkMode, async (newValue: boolean) => {
       class="button fixed top-6 left-8"
       >Home</router-link>
     <button
+      id="close"
       @click="back()"
       class="fixed top-6 right-8 text-4xl"
     >✕</button>
