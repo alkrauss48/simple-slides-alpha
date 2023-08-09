@@ -3,6 +3,7 @@ import { ref, watch } from 'vue'
 import { useRouter } from 'vue-router'
 
 import { VisualMode, isDarkMode } from '../enums/visualMode.ts';
+import GithubIcon from './icons/GithubIcon.vue';
 import { getVisualMode, setVisualMode } from '../utils/handleVisualMode.ts';
 
 const router = useRouter();
@@ -68,5 +69,15 @@ watch(darkMode, async (newValue: boolean) => {
         type="submit"
       >Present</button>
     </form>
+    <a
+      href="https://github.com/alkrauss48/simple-slides"
+      target="_blank"
+      title="Github repo"
+      class="
+        fixed bottom-6 right-6
+        text-5xl text-gray-300/50
+        hover:text-gray-300 focus:text-gray-300
+      "
+      ><GithubIcon /></a>
   </main>
 </template>
