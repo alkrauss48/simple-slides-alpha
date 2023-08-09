@@ -79,7 +79,7 @@ onUnmounted(() => window.removeEventListener('keydown',  bindKeyDown));
 
 <template>
   <div class="w-full h-[100dvh] flex justify-center items-center">
-    <SlideContent :key="slideStore.index" :content="content" />
+    <SlideContent :key="content" :content="content" />
     <SlideArrows
       @next="incrementContent(1)"
       @previous="incrementContent(-1)"
